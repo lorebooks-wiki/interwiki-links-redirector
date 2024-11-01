@@ -1,0 +1,20 @@
+{
+  "name": "@lorebooks-wiki/interwiki-redirects",
+  "version": "0.1.0",
+  "description": "A Hono server for the interwiki redirects with static website built with 11ty",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorebooks-wiki/interwiki-redirects.git"
+  },
+  "author": "Andrei Jiroh Halili <ajhalili2006@crew.recaptime.dev>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/lorebooks-wiki/interwiki-redirects/issues"
+  },
+  "homepage": "https://github.com/lorebooks-wiki/interwiki-redirects#readme",
+  "workspaces": ["website"]
+}

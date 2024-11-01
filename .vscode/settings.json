@@ -1,0 +1,16 @@
+{
+  "deno.enable": true,
+  "editor.inlayHints.enabled": "off",
+  "git.alwaysSignOff": true,
+  "editor.indentSize": "tabSize",
+  "editor.tabSize": 2,
+  "conventionalCommits.scopes": [
+    "vscode",
+    "lib",
+    "website",
+    "api",
+    "vscode",
+    "coderabbit",
+    "global"
+  ]
+}

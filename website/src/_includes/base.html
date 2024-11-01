@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="{{ eleventy.generator }}">
+    <meta name="description" content="{{ description if description else 'test' }}">
+    <title>{{ title }} | Interwiki Redirects - Community Lorebooks</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/x-icon" href=""
+  </head>
+  <body>
+    <main class="max-w-lg mx-auto mt-6 px-4">
+      {{ content | safe }}
+    </main>
+  </body>
+</html>
