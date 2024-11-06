@@ -1,0 +1,37 @@
+name: Deno Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    paths:
+      - main.ts
+      - website/**/*
+      - website/*
+      - lib/*
+      - .github/workflows/deno-deploy.yml
+
+jobs:
+  deploy:
+    permissions:
+      id-token: write # This is required to allow the GitHub Action to authenticate with Deno Deploy.
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - name: Build static resources
+        run: |
+          npm i
+          cd website
+          npm run build
+      - name: Upload to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: "lorebooks-interwiki-redir"
+          entrypoint: "main.ts"
+          root: "."
