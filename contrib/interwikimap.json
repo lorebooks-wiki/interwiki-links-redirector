@@ -1,0 +1,23 @@
+{
+  "gildedguy": {
+    "homepage": "https://stellapent.wiki",
+    "urlPrefix": "https://stellapent.wiki",
+    "cw": false,
+    "cwReson": null
+  },
+  "meta": {
+    "homepage": "https://lorebooks.wiki",
+    "urlPrefix": "https://lorebooks.wiki",
+    "cw": false,
+    "cwReson": null
+  },
+  "stellapent-cier": {
+    "homepage": "https://stellapent.wiki",
+    "urlPrefix": "https://stellapent.wiki",
+    "cw": false,
+    "cwReson": null
+  },
+  "test-skip": {
+    "skip": true
+  }
+}

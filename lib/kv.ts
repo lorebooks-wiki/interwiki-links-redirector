@@ -10,7 +10,7 @@ const kvApi = async (path?: string) => {
 
 export const kv = await kvApi(config.kvUrl)
 
-type interwikiData = {
+export type interwikiData = {
   homepage: string,
   urlPrefix: string,
   cw?: boolean,
@@ -55,5 +55,40 @@ export async function setInterwikiData(
   if (cw == true) {
     request.cw = true;
     request.cwReason = cwReason || "no reason provided"
+  } else {
+    request.cw = false;
+  }
+
+  try {
+    return await kv.set(["interwiki", wiki], request)
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export async function getInterwikiShortcutData(
+  wiki: string,
+  shortcut: string
+) {
+  const key = ["interwiki_shortcuts", wiki, shortcut]
+
+  try {
+    return await kv.get(key)
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export async function setInterwikiShortcutData(
+  wiki: string,
+  shortcut: string,
+  url: string,
+) {
+  const key = ["interwiki_shortcuts", wiki, shortcut]
+
+  try {
+    return await kv.set(key, url)
+  } catch (error) {
+    throw new Error(error)
   }
 }
