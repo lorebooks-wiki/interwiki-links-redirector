@@ -31,6 +31,7 @@ app.get("/test-broken", (c: Context) => {
 app.get("/:wiki", async(c: Context, next: Next) => {
   const { wiki } = c.req.param()
   const {data: dbResult, error } = await getInterwikiData(wiki)
+  console.log(`[debug] dbResult: ${JSON.stringify(dbResult)}`)
 
   if (dbResult?.value !== null) {
     const interwikiData = dbResult?.value || defaultRedirects
@@ -38,6 +39,21 @@ app.get("/:wiki", async(c: Context, next: Next) => {
   } else {
     return NotFoundHandler(c, next)
   }
+})
+
+app.get("/:wiki/*", async (c: Context) => {
+  const {wiki}  = c.req.param()
+  const { data: dbResult, error } = await getInterwikiData(wiki)
+
+  const path = c.req.path.slice(`/${wiki}/`.length)
+
+  if (dbResult === null) {
+    return NotFoundHandler(c)
+  }
+
+  const targetUrl = `${dbResult.value.homepage}/${path}`
+  console.log(`[debug]: redirecting to ${targetUrl}`)
+  return c.redirect(targetUrl)
 })
 
 app.notFound((c: Context, next: Next) => {
